@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Solmar — an open-world crime game</title>
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; background: #0a141c; font-family: 'Segoe UI', system-ui, sans-serif; }
+  #game { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+  #hud { position: fixed; inset: 0; pointer-events: none; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.7); }
+  #topbar { position: absolute; top: 14px; left: 16px; right: 16px; display: flex; justify-content: space-between; align-items: flex-start; }
+  #cash { font-size: 30px; font-weight: 800; color: #7dff8a; }
+  #wanted { font-size: 26px; letter-spacing: 2px; color: #ffd23e; opacity: 0.35; }
+  #objective { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); max-width: 46%; text-align: center; font-size: 16px; font-weight: 600; background: rgba(10,20,28,0.55); padding: 8px 14px; border-radius: 8px; }
+  #minimap { position: absolute; right: 16px; top: 64px; width: 168px; height: 168px; border: 2px solid rgba(255,255,255,0.35); border-radius: 8px; background: rgba(16,24,32,0.8); }
+  #bottombar { position: absolute; bottom: 16px; left: 16px; right: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
+  #healthwrap { width: 220px; }
+  #healthlabel { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  #healthbar { width: 100%; height: 12px; background: rgba(0,0,0,0.55); border-radius: 6px; overflow: hidden; }
+  #health { height: 100%; width: 100%; background: #3aff6a; }
+  #ammo { font-size: 18px; font-weight: 700; margin-top: 6px; }
+  #speed { font-size: 26px; font-weight: 800; }
+  #message { position: absolute; bottom: 84px; left: 50%; transform: translateX(-50%); font-size: 18px; font-weight: 700; background: rgba(10,20,28,0.65); padding: 8px 16px; border-radius: 8px; opacity: 0; transition: opacity 0.3s; }
+  #screen { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(8,20,32,0.72), rgba(8,20,32,0.88)); color: #fff; text-align: center; z-index: 10; }
+  #screen-title { font-size: 64px; font-weight: 900; letter-spacing: 6px; color: #ffd23e; text-shadow: 0 4px 24px rgba(0,0,0,0.6); }
+  #screen-text { font-size: 19px; max-width: 620px; margin-top: 14px; line-height: 1.5; }
+  #screen-sub { font-size: 15px; margin-top: 22px; color: #bcd6e8; }
+  #controls { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); font-size: 12px; color: rgba(255,255,255,0.75); background: rgba(10,20,28,0.5); padding: 5px 10px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<div id="hud">
+  <div id="topbar">
+    <div id="cash">$200</div>
+    <div id="objective">Welcome to Solmar.</div>
+    <div id="wanted">☆☆☆☆☆</div>
+  </div>
+  <canvas id="minimap" width="168" height="168"></canvas>
+  <div id="bottombar">
+    <div id="healthwrap">
+      <div id="healthlabel">HEALTH</div>
+      <div id="healthbar"><div id="health"></div></div>
+      <div id="ammo">Ammo 12</div>
+    </div>
+    <div id="speed"></div>
+  </div>
+  <div id="message"></div>
+  <div id="controls">WASD move / drive &nbsp;·&nbsp; E enter car &nbsp;·&nbsp; F punch &nbsp;·&nbsp; Click shoot &nbsp;·&nbsp; P pause &nbsp;·&nbsp; M mute</div>
+</div>
+<div id="screen" style="display:none">
+  <div id="screen-title">SOLMAR</div>
+  <div id="screen-text"></div>
+  <div id="screen-sub"></div>
+</div>
+<script src="vendor/three.min.js"></script>
+<script src="src/config.js"></script>
+<script src="src/rng.js"></script>
+<script src="src/city.js"></script>
+<script src="src/vehicles.js"></script>
+<script src="src/people.js"></script>
+<script src="src/police.js"></script>
+<script src="src/missions.js"></script>
+<script src="src/combat.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/input.js"></script>
+<script src="src/render.js"></script>
+<script src="src/shots.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
